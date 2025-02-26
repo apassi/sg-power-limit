@@ -43,7 +43,7 @@ echo -e "\n\n"
 param=$(echo "$param" | jq -rc '. + { token: env.token }')
 query=$(echo $param | jq -r '[to_entries[] | (@uri "\(.key)" + "=" + @uri "\(.value)")] | join("&")')
 sleep 1
-curl "http://192.168.86.48/device/getParam?$query"
+curl "http://$HOST/device/getParam?$query"
 
 
 echo -e "\n\n"
